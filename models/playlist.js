@@ -8,7 +8,7 @@ const playlistSchema = new mongoose.Schema({
   },
   songs: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Song',
+    ref: 'SongModel', //the ref is the name of the model that we are referencing
   }],
 });
 

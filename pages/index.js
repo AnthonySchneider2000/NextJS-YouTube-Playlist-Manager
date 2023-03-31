@@ -1,13 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-// import styles from "../styles/index.module.css";
-import App from "./App";
-import Playlists from "./Playlists";
-import PlaylistPage from "./PlaylistPage";
-import SongPage from "./SongPage";
-import SearchPage from "./SearchPage";
-import reportWebVitals from "./reportWebVitals";
-import Link from "next/link";
 import connectToDatabase from "./db";
 import Sidebar from "./Sidebar";
 import SearchButton from "./SearchButton";
@@ -28,7 +19,7 @@ export default function Home({ data }) {
 }
 
 // get data from database
-export async function getStaticProps() {
+export async function getServerSideProps() {
   await connectToDatabase();
 
   console.log(mongoose.connection);
@@ -36,7 +27,7 @@ export async function getStaticProps() {
   const data = await mongoose.connection.db.collection("playlists").findOne();
 
   const serializableData = {
-    _id: data._id.toString(), // convert _id to a string
+    // _id: data._id.toString(), // convert _id to a string
     name: data.name,
   };
 

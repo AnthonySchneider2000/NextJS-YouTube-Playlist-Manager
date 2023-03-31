@@ -21,7 +21,8 @@ const Sidebar = (props) => {
       <Link href="/" className={styles["menu-item"]}>Home</Link>
       <Link href="/Playlists" className={styles["menu-item"]}>Playlists</Link>
       <Link href="/SubmitSong" className={styles["menu-item"]}>Submit Song</Link>
-
+      <Link href="/Login" className={styles["menu-item"]}>Login</Link>
+      <Link href="/Register" className={styles["menu-item"]}>Register</Link>
     </Menu>
   );
 };
