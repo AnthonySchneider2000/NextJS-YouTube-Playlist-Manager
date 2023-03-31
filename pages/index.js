@@ -12,7 +12,7 @@ export default function Home({ data }) {
       <Sidebar pageWrapId={"page-wrap"} outerContainerId={"outer-container"} />
       <SearchButton />
       <header className={styles["App-header"]}>
-        <h1>Data from database: {JSON.stringify(data)}</h1>
+        <h1>Music DB</h1>
       </header>
     </div>
   );
@@ -22,7 +22,7 @@ export default function Home({ data }) {
 export async function getServerSideProps() {
   await connectToDatabase();
 
-  console.log(mongoose.connection);
+  // console.log(mongoose.connection);
 
   const data = await mongoose.connection.db.collection("playlists").findOne();
 

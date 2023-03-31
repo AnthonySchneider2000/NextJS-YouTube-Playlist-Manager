@@ -1,43 +1,52 @@
-//[SongID].js
 import Sidebar from "../../Sidebar";
 import React from "react";
 import styles from "../../../styles/App.module.css";
-import styless from "../../../styles/Playlists.module.css";
 import SearchButton from "../../SearchButton";
+import connectToDatabase from "../../db";
+import mongoose from "mongoose";
 
-// //load playlists from local storage
-// //let playlists = JSON.parse(localStorage.getItem("playlists"));
-// let playlists = [];
-// if (playlists === null) {
-//   playlists = [];
-// }
-// //retrieve current playlist by id
-// let curPlaylist = playlists.find((playlist) => playlist.id);
-// //retrieve index of current playlist
-// // let curPlaylistIndex = playlists.indexOf(curPlaylist);
-// // let songs = curPlaylist.songs;
-// let songs = [];
-// let curSong = songs.find((song) => song.id);
-// // let curSongIndex = songs.indexOf(curSong);
-
-//define a song object
-let curSong = { name: "Song Name", id: 0 };
-
-//renders the app page, with a vertical list of playlists and a create playlists button
-export default class SongPage extends React.Component {
-  render() {
-    return (
-      <div className={styles["App"]}>
-        <Sidebar
-          pageWrapId={"page-wrap"}
-          outerContainerId={"outer-container"}
-        />
-        <SearchButton />
-        <div className={styles["App-header"]}>
-          <h1>{curSong.name}</h1>
-        </div>
+export default function SongPage({ song }) {
+  return (
+    <div className={styles["App"]}>
+      <Sidebar
+        pageWrapId={"page-wrap"}
+        outerContainerId={"outer-container"}
+      />
+      <SearchButton />
+      <div className={styles["App-header"]}>
+        <h1>{song.name}</h1>
       </div>
-    );
+    </div>
+  );
+}
+
+export async function getServerSideProps(context) {
+  await connectToDatabase();
+
+  const { PlaylistID, SongID } = context.params;
+  const playlist = await mongoose.connection.db.collection("playlists").findOne({ _id: new mongoose.Types.ObjectId(PlaylistID) });
+
+  if (!playlist) {
+    // handle playlist not found error
+    return {
+      notFound: true
+    }
   }
 
+  const song = playlist.songs.find(song => song.id === SongID);
+
+  if (!song) {
+    // handle song not found error
+    return {
+      notFound: true
+    }
+  }
+
+  return {
+    props: {
+      song: song,
+      playlistName: playlist.name,
+    },
+  };
 }
+

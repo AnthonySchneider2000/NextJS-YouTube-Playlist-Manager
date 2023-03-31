@@ -1,7 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React from "react";
-import styles from "../styles/App.module.css";
-import styless from "../styles/Playlist.module.css";
+import styles from "../styles/Playlist.module.css";
 
 export default class Song extends React.Component {
   constructor(props) {
