@@ -1,0 +1,36 @@
+.create-button {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  margin-top: 100px;
+  padding: 10px;
+  border-radius: 5px;
+  /* background-color: #373a47; */
+  background-color: #282c34;
+  color: #58628a;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 0px solid white;
+}
+.create-button:hover {
+  /* background-color: #282c34; */
+  /* background-color: #58628a; */
+  color: #c7d3ff;
+}
+
+.playlistList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  border: 5px solid #373a47;
+  border-radius: 5px;
+  background-color: #282c34;
+  color: white;
+  font-size: 0.6em;
+  width: 75%;
+}

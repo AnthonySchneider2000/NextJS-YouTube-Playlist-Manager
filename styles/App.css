@@ -1,0 +1,50 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+/* h1{
+  margin-bottom: 0px;
+} */
+/* id should be small white text right under the page title */
+.id{
+  font-size: 0.5em;
+  color: white;
+  /* perhaps change color to same as add song button */
+}
+
+.create-button {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  /* background-color: #373a47; */
+  background-color: #282c34;
+  color: #58628a;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 0px solid white;
+}
+.create-button:hover {
+  /* background-color: #282c34; */
+  /* background-color: #58628a; */
+  color: #c7d3ff;
+}
