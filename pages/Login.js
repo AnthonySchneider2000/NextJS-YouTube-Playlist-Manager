@@ -10,7 +10,7 @@ export default function Login() {
       <div className={styles["App-header"]}>
         <h1>Login</h1>
       </div>
-      <form className={styles["registration-form"]}>
+      <form className={styles["registration-form"]} action="/api/login" method="post">
         <label htmlFor="username">Username:</label>
         <input type="text" id="username" name="username" required />
         <label htmlFor="password">Password:</label>

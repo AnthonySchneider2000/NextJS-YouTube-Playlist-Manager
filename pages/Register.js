@@ -2,7 +2,7 @@ import React from "react";
 import Sidebar from "./Sidebar";
 import SearchButton from "./SearchButton";
 import styles from "../styles/App.module.css";
-
+//TODO: BCRYPT
 export default function Register() {
   return (
     <div className={styles["App"]}>
@@ -10,7 +10,7 @@ export default function Register() {
       <div className={styles["App-header"]}>
         <h1>Register</h1>
       </div>
-      <form className={styles["registration-form"]}>
+      <form className={styles["registration-form"]} action="/api/register" method="post">
         <label htmlFor="username">Username:</label>
         <input type="text" id="username" name="username" required />
         <label htmlFor="email">Email:</label>

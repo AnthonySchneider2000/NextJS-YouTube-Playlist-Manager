@@ -13,6 +13,5 @@ const songSchema = new mongoose.Schema({
   duration: Number,
 });
 
-const SongModel = mongoose.model('songCollection', songSchema);
+module.exports = mongoose.models.song || mongoose.model('song', songSchema);
 
-export default SongModel;

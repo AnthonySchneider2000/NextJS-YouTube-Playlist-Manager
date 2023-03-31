@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { mongo } from 'mongoose';
 // import SongModel from './song';
 
 const playlistSchema = new mongoose.Schema({
@@ -12,6 +12,5 @@ const playlistSchema = new mongoose.Schema({
   // }],
 });
 
-const PlaylistModel = mongoose.model('playlists', playlistSchema);
+module.exports = mongoose.models.playlist || mongoose.model('playlist', playlistSchema);
 
-export default PlaylistModel;
