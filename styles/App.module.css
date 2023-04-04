@@ -46,6 +46,10 @@
   height: 50%;
   opacity: 0.25;
 }
+.logout-link {
+  color: red;
+}
+
 
 /* h1{
   margin-bottom: 0px;
