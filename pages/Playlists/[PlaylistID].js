@@ -99,9 +99,6 @@ export async function getServerSideProps(context) {
     }
   }
 
-  console.log("songsInPlaylist: ");
-  console.log(songsInPlaylist);
-
   return {
     props: {
       allSongs: allSongs.map((song) => ({
