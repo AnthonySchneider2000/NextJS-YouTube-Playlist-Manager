@@ -11,6 +11,7 @@ const songSchema = new mongoose.Schema({
   },
   album: String,
   duration: Number,
+  youtubeLink: String,
 });
 
 module.exports = mongoose.models.song || mongoose.model('song', songSchema);

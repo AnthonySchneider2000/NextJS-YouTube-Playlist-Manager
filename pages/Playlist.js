@@ -14,7 +14,7 @@ export default class Playlist extends React.Component {
     this.state = {
       name: this.props.name,
       id: this.props.id,
-      songs: this.props.songs,
+      // songs: this.props.songs,
     };
   }
 
