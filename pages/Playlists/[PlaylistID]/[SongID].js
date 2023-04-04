@@ -2,11 +2,13 @@
 import Sidebar from "../../Sidebar";
 import React from "react";
 import styles from "../../../styles/App.module.css";
+import playlistCSS from "../../../styles/Playlists.module.css";
 import SearchButton from "../../SearchButton";
 import connectToDatabase from "../../db";
 import mongoose from "mongoose";
 
 export default function SongPage({ song }) {
+
   return (
     <div className={styles["App"]}>
       <Sidebar pageWrapId={"page-wrap"} outerContainerId={"outer-container"} />
@@ -14,8 +16,15 @@ export default function SongPage({ song }) {
       <div className={styles["App-header"]}>
         <h1 className={styles["small-bottom-margin"]}>{song.name}</h1>
         <h2 className={styles["small-margins"]}>Artist: {song.artist}</h2>
+        <button
+          className={playlistCSS["create-button"]}
+          // onClick = {handleCreatePlaylist}
+        >
+          Add<br></br>Link
+        </button>
         {/* <div className={styles["id"]}>Artist: {song.artist}</div> */}
       </div>
+      {/* shows a youtube embed if the song object has one, if not displays a message */}
       {song.youtubeLink ? (
         <iframe
           className={styles["youtube-embed"]}
@@ -30,7 +39,7 @@ export default function SongPage({ song }) {
       ) : (
         <p className={styles["youtube-embed"]}>No video available for this song.</p>
       )}
-      
+
     </div>
   );
 }
@@ -71,8 +80,7 @@ export async function getServerSideProps(context) {
         name: song.title,
         artist: song.artist,
         id: song._id.toString(),
-        //if youtube link is undefined, set it to an empty string
-        youtubeLink: song.youtubeLink ?? "",
+        youtubeLink: song.youtubeLink ?? "", //if youtube link is undefined, set it to an empty string
       },
       playlistName: playlist.name,
     },
