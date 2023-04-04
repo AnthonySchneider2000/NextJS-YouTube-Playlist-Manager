@@ -8,7 +8,7 @@ import mongoose from "mongoose";
 import { withSession } from "../lib/session";
 
 function Home({ user }) {
-  const greeting = user ? `Hello, ${user.name}!` : "Music DB";
+  const greeting = user ? `Hello, ${user.name}!` : "YouTube Playlist Manager";
   return (
     <div className={styles["App"]}>
       <Sidebar pageWrapId={"page-wrap"} outerContainerId={"outer-container"} />
