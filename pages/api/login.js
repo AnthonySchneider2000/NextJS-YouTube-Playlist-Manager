@@ -1,15 +1,24 @@
 import connectToDatabase from "../db";
 import user from "../../models/user";
+import { withSession } from "../../lib/session";
 
 connectToDatabase();
 
-//login function
-export default async function handler(req, res){
-    const {username, password} = req.body;
-    const newUser = await user.findOne({username, password});
-    if(!newUser){
-        res.status(401).json({success:false, message:"Invalid username or password"});
-    }else{
-        res.status(200).json({success:true, message:"User logged in", newUser});
-    }
-}
+const handler = withSession(async (req, res) => {
+  const { username, password } = req.body;
+  const newUser = await user.findOne({ username, password });
+  
+  if (!newUser) {
+    res.status(401).json({ success: false, message: "Invalid username or password" });
+  } else {
+    // Set the user data to the session
+    console.log(newUser);
+    req.session.set("user", { name: newUser.username, email: newUser.email });
+    await req.session.save();
+    
+    res.redirect("/");
+    // res.status(200).json({ success: true, message: "User logged in", newUser });
+  }
+});
+
+export default handler;

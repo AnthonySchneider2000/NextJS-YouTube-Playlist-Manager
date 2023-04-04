@@ -5,14 +5,16 @@ import SearchButton from "./SearchButton";
 //import Playlist from "./Playlist";
 import styles from "../styles/App.module.css";
 import mongoose from "mongoose";
+import { withSession } from "../lib/session";
 
-export default function Home({ data }) {
+function Home({ user }) {
+  const greeting = user ? `Hello, ${user.name}!` : "Music DB";
   return (
     <div className={styles["App"]}>
       <Sidebar pageWrapId={"page-wrap"} outerContainerId={"outer-container"} />
       <SearchButton />
       <header className={styles["App-header"]}>
-        <h1>Music DB</h1>
+        <h1>{greeting}</h1>
       </header>
       {/* add the image from public/guitar.webp to the center of the screen, use theme guitar-logo */}
       <img className={styles["guitar-logo"]} src="/guitar.webp" alt="guitar logo" />
@@ -21,21 +23,16 @@ export default function Home({ data }) {
 }
 
 // get data from database
-export async function getServerSideProps() {
+export const getServerSideProps = withSession(async function ({ req }) {
   await connectToDatabase();
 
-  // console.log(mongoose.connection);
-
-  const data = await mongoose.connection.db.collection("playlists").findOne();
-
-  const serializableData = {
-    // _id: data._id.toString(), // convert _id to a string
-    name: data.name,
-  };
+  const user = req.session.get("user") || null;
 
   return {
     props: {
-      data: serializableData || {},
+      user,
     },
   };
-}
+});
+
+export default Home;
