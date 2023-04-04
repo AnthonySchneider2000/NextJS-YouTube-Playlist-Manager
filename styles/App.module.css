@@ -37,6 +37,16 @@
   width: 75%;
   height: 65%;
 }
+.guitar-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-25deg);
+  width: 50%;
+  height: 50%;
+  opacity: 0.25;
+}
+
 /* h1{
   margin-bottom: 0px;
 } */

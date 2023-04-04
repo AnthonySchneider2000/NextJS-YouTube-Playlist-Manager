@@ -14,6 +14,8 @@ export default function Home({ data }) {
       <header className={styles["App-header"]}>
         <h1>Music DB</h1>
       </header>
+      {/* add the image from public/guitar.webp to the center of the screen, use theme guitar-logo */}
+      <img className={styles["guitar-logo"]} src="/guitar.webp" alt="guitar logo" />
     </div>
   );
 }
