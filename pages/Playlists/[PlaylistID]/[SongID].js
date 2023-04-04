@@ -8,7 +8,47 @@ import connectToDatabase from "../../db";
 import mongoose from "mongoose";
 
 export default function SongPage({ song }) {
+  //function to santize and return the youtube link
+  const sanitizeYoutubeLink = (link) => {
+    //split the link by the '='
+    const splitLink = link.split("=");
+    //get the last part of the link
+    const videoID = splitLink[splitLink.length - 1];
+    //return the link with the videoID
+    return `https://www.youtube.com/embed/${videoID}`;
+  };
 
+  const addYoutubeLink = async (link) => {
+    //song id
+    console.log(song);
+    const SongID = song.id;
+    console.log(SongID);
+    const response = await fetch(`/api/addYoutubeLink/${SongID}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        youtubeLink: link,
+      }),
+    });
+
+    if (response.ok) {
+      // Refresh the page to update the playlists
+      window.location.reload();
+    } else {
+      console.error("Failed to add YouTube Link:", response.status);
+    }
+  };
+  
+  function handleAddYoutubeLink() {
+    let link = prompt("Enter youtube link:");
+    //sanitize the link
+    link = sanitizeYoutubeLink(link);
+    if (link) {
+      addYoutubeLink(link);
+    }
+  }
   return (
     <div className={styles["App"]}>
       <Sidebar pageWrapId={"page-wrap"} outerContainerId={"outer-container"} />
@@ -18,7 +58,7 @@ export default function SongPage({ song }) {
         <h2 className={styles["small-margins"]}>Artist: {song.artist}</h2>
         <button
           className={playlistCSS["create-button"]}
-          // onClick = {handleCreatePlaylist}
+          onClick={handleAddYoutubeLink}
         >
           Add<br></br>Link
         </button>
@@ -32,14 +72,15 @@ export default function SongPage({ song }) {
           height="315"
           src={song.youtubeLink}
           title="YouTube video player"
-          frameborder="0"
+          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen="true"
+          allowFullScreen={true}
         ></iframe>
       ) : (
-        <p className={styles["youtube-embed"]}>No video available for this song.</p>
+        <p className={styles["youtube-embed"]}>
+          No video available for this song.
+        </p>
       )}
-
     </div>
   );
 }
@@ -71,8 +112,8 @@ export async function getServerSideProps(context) {
   const song = await mongoose.connection.db
     .collection("songs")
     .findOne({ _id: new mongoose.Types.ObjectId(SongID) });
-  console.log("song: ");
-  console.log(song);
+  // console.log("song: ");
+  // console.log(song);
   return {
     props: {
       // make the song serializable

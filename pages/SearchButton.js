@@ -8,7 +8,9 @@ export default class SearchButton extends React.Component {
     let searchTerm = prompt("Enter search term:");
     // console.log(searchTerm);
     //go to search page
-    window.location.href = "/search/" + searchTerm;
+    if(searchTerm){
+      window.location.href = "/search/" + searchTerm;
+    }
   };
   render() {
     return (
