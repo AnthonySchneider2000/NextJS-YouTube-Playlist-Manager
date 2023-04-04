@@ -7,7 +7,8 @@ const connectToDatabase = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log('Connected to database');
+    //log that we're connected with a timestamp
+    console.log(`Connected to database at ${new Date().toLocaleTimeString()}`);
   } catch (error) {
     console.log('Error connecting to database:', error);
   }
