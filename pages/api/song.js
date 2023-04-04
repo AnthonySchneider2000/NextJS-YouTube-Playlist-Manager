@@ -17,7 +17,9 @@ export default async function handler(req, res) {
         
         const newSong = await Song.create({ title, artist }); // Create a new song with the specified data
 
-        res.status(201).json({ success: true, data: newSong });
+        // res.status(201).json({ success: true, data: newSong });
+        // res.redirect("/Song/" + newSong._id);
+        res.redirect("/");
       } catch (error) {
         res.status(400).json({ success: false });
       }

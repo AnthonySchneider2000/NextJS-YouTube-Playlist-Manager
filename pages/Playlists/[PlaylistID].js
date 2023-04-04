@@ -88,11 +88,6 @@ export async function getServerSideProps(context) {
     .collection("songs")
     .find()
     .toArray();
-  // console.log(allSongs);
-  // console.log("allSongs[0]._id: " + allSongs[0]._id);
-  // console.log("allSongs[1]._id: " + allSongs[1]._id);
-  // console.log("playlist.songs[0]: " + playlist.songs[0]);
-  // console.log(playlist);
 
   //iterate through allSongs and
   let songsInPlaylist = [];
