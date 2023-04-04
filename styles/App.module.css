@@ -16,12 +16,33 @@
 .App-link {
   color: #61dafb;
 }
-
+.small-margins {
+  margin: 0.01em;
+}
+.small-bottom-margin {
+  margin-bottom: 0.01em;
+}
+.youtube-embed {
+  position: absolute;
+  top: 20%;
+  left: 12.5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  background-color: #282c34;
+  color: white;
+  font-size: calc(10px + 2vmin);
+  width: 75%;
+  height: 45%;
+}
 /* h1{
   margin-bottom: 0px;
 } */
+
 /* id should be small white text right under the page title */
-.id{
+.id {
   font-size: 0.5em;
   color: white;
   /* perhaps change color to same as add song button */
