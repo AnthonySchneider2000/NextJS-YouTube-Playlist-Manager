@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Playlist from "./Playlist";
 import Sidebar from "./Sidebar";
 import React from "react";
@@ -10,8 +10,16 @@ import mongoose from "mongoose";
 
 export default function Playlists({ data }) {
   const [playlistName, setPlaylistName] = useState("");
+  const [creatingPlaylist, setCreatingPlaylist] = useState(false);
   const playlists = data?.playlists || [];
-  
+
+  useEffect(() => {
+    if (playlistName && creatingPlaylist) {
+      createPlaylist();
+      setCreatingPlaylist(false);
+    }
+  }, [playlistName]);
+
   const createPlaylist = async () => {
     try {
       const response = await fetch("/api/playlist", {
@@ -40,7 +48,7 @@ export default function Playlists({ data }) {
 
     if (name) {
       setPlaylistName(name);
-      createPlaylist();
+      setCreatingPlaylist(true);
     }
   };
 
