@@ -1,6 +1,6 @@
-import connectToDatabase from "../db";
+import connectToDatabase from '@/utils/db';
 import user from "../../models/user";
-import { withSession } from "../../lib/session";
+import { withSession } from "@/utils/session"
 
 connectToDatabase();
 

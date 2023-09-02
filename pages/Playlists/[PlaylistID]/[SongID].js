@@ -1,10 +1,10 @@
 // [SongID].js
-import Sidebar from "../../Sidebar";
+import Sidebar from "@/components/Sidebar";
 import React from "react";
 import styles from "../../../styles/App.module.css";
 import playlistCSS from "../../../styles/Playlists.module.css";
-import SearchButton from "../../SearchButton";
-import connectToDatabase from "../../db";
+import SearchButton from "@/components/SearchButton";
+import connectToDatabase from '@/utils/db';
 import mongoose from "mongoose";
 
 export default function SongPage({ song }) {

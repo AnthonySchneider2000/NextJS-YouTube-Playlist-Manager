@@ -1,4 +1,4 @@
-import connectToDatabase from "../db";
+import connectToDatabase from '@/utils/db';
 import mongoose from "mongoose";
 
 export default async function handler(req, res) {

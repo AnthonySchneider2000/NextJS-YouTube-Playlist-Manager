@@ -1,7 +1,7 @@
-import Sidebar from "./Sidebar";
+import Sidebar from "@/components/Sidebar";
 import React from "react";
 import styles from "../styles/App.module.css";
-import SearchButton from "./SearchButton";
+import SearchButton from "@/components/SearchButton";
 
 export default function SubmitSong() {
   return (

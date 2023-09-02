@@ -1,11 +1,11 @@
 import React from "react";
-import connectToDatabase from "./db";
-import Sidebar from "./Sidebar";
-import SearchButton from "./SearchButton";
-//import Playlist from "./Playlist";
+import connectToDatabase from '@/utils/db';
+import Sidebar from "@/components/Sidebar";
+import SearchButton from "@/components/SearchButton";
+//import Playlist from "@/components/Playlist";
 import styles from "../styles/App.module.css";
 import mongoose from "mongoose";
-import { withSession } from "../lib/session";
+import { withSession } from "@/utils/session"
 
 function Home({ user }) {
   const greeting = user ? `Hello, ${user.name}!` : "YouTube Playlist Manager";

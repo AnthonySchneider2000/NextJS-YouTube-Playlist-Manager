@@ -1,5 +1,5 @@
-import connectToDatabase from "../db";
-import Playlist from "../../models/playlist";
+import connectToDatabase from '@/utils/db';
+import Playlist from "@/components/Playlist";
 
 connectToDatabase();
 

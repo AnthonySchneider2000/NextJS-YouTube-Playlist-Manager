@@ -1,6 +1,6 @@
 import React from "react";
-import Sidebar from "./Sidebar";
-import SearchButton from "./SearchButton";
+import Sidebar from "@/components/Sidebar";
+import SearchButton from "@/components/SearchButton";
 import styles from "../styles/App.module.css";
 //TODO: BCRYPT
 export default function Register() {

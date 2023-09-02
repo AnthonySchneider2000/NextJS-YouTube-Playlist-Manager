@@ -1,4 +1,4 @@
-import connectToDatabase from "../db";
+import connectToDatabase from '@/utils/db';
 import Song from "../../models/song";
 
 connectToDatabase();

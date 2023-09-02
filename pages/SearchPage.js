@@ -1,8 +1,8 @@
-import Sidebar from "./Sidebar";
+import Sidebar from "@/components/Sidebar";
 import React from "react";
 import styles from "../styles/App.module.css";
 import styless from "../styles/Playlists.module.css";
-import SearchButton from "./SearchButton";
+import SearchButton from "@/components/SearchButton";
 
 //renders the app page, with a vertical list of playlists and a create playlists button
 export default class SearchPage extends React.Component {
