@@ -6,6 +6,7 @@ import playlistCSS from "../../../styles/Playlists.module.css";
 import SearchButton from "@/components/SearchButton";
 import connectToDatabase from '@/utils/db';
 import mongoose from "mongoose";
+import Layout from "@/components/Layout";
 
 export default function SongPage({ song }) {
   //function to santize and return the youtube link
@@ -50,9 +51,7 @@ export default function SongPage({ song }) {
     }
   }
   return (
-    <div className={styles["App"]}>
-      <Sidebar pageWrapId={"page-wrap"} outerContainerId={"outer-container"} />
-      <SearchButton />
+    <Layout noHeader>
       <div className={styles["App-header"]}>
         <h1 className={styles["small-bottom-margin"]}>{song.name}</h1>
         <h2 className={styles["small-margins"]}>Artist: {song.artist}</h2>
@@ -81,7 +80,7 @@ export default function SongPage({ song }) {
           No video available for this song.
         </p>
       )}
-    </div>
+    </Layout>
   );
 }
 

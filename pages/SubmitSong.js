@@ -2,14 +2,11 @@ import Sidebar from "@/components/Sidebar";
 import React from "react";
 import styles from "../styles/App.module.css";
 import SearchButton from "@/components/SearchButton";
+import Layout from "@/components/Layout";
 
 export default function SubmitSong() {
   return (
-    <div className={styles["App"]}>
-      <Sidebar pageWrapId={"page-wrap"} outerContainerId={"outer-container"} />
-      <div className={styles["App-header"]}>
-        <h1>Submit Song</h1>
-      </div>
+    <Layout title="Submit Song">
       <form
         className={styles["registration-form"]}
         action="/api/song"
@@ -24,7 +21,6 @@ export default function SubmitSong() {
 
         <button type="submit">Submit</button>
       </form>
-      <SearchButton />
-    </div>
+    </Layout>
   );
 }

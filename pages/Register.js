@@ -2,14 +2,11 @@ import React from "react";
 import Sidebar from "@/components/Sidebar";
 import SearchButton from "@/components/SearchButton";
 import styles from "../styles/App.module.css";
+import Layout from "@/components/Layout";
 //TODO: BCRYPT
 export default function Register() {
   return (
-    <div className={styles["App"]}>
-      <Sidebar pageWrapId="page-wrap" outerContainerId="outer-container" />
-      <div className={styles["App-header"]}>
-        <h1>Register</h1>
-      </div>
+    <Layout title="Register">
       <form
         className={styles["registration-form"]}
         action="/api/register"
@@ -23,7 +20,7 @@ export default function Register() {
         <input type="password" id="password" name="password" required />
         <button type="submit">Register</button>
       </form>
-      <SearchButton />
-    </div>
+    </Layout>
+      
   );
 }

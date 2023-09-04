@@ -6,8 +6,9 @@ import playlistCSS from "../../styles/Playlists.module.css";
 import Song from "@/components/Song";
 import SearchButton from "@/components/SearchButton";
 import { useRouter } from "next/router";
-import connectToDatabase from '@/utils/db';
+import connectToDatabase from "@/utils/db";
 import mongoose from "mongoose";
+import Layout from "@/components/Layout";
 
 export default function PlaylistPage({ allSongs, songs, playlistName }) {
   const router = useRouter();
@@ -48,24 +49,16 @@ export default function PlaylistPage({ allSongs, songs, playlistName }) {
     }
   }
   return (
-    <div className={styles["App"]}>
-      <Sidebar pageWrapId={"page-wrap"} outerContainerId={"outer-container"} />
-      <SearchButton />
-      <header className={styles["App-header"]}>
-        <h1>{playlistName}</h1>
-        <button
-          className={playlistCSS["create-button"]}
-          onClick={handleAddSong}
-        >
-          Add<br></br>Song
-        </button>
-        <div className={playlistCSS["playlistList"]}>
-          {songs.map((song) => (
-            <Song name={song.name} id={song.id} key={song.id} />
-          ))}
-        </div>
-      </header>
-    </div>
+    <Layout useHeaderStyling title={playlistName}>
+      <button className={playlistCSS["create-button"]} onClick={handleAddSong}>
+        Add<br></br>Song
+      </button>
+      <div className={playlistCSS["playlistList"]}>
+        {songs.map((song) => (
+          <Song name={song.name} id={song.id} key={song.id} />
+        ))}
+      </div>
+    </Layout>
   );
 }
 

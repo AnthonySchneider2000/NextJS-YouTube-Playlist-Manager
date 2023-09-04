@@ -7,6 +7,7 @@ import playlistCSS from "../styles/Playlists.module.css";
 import SearchButton from "@/components/SearchButton";
 import connectToDatabase from '@/utils/db';
 import mongoose from "mongoose";
+import Layout from "@/components/Layout";
 
 export default function Playlists({ data }) {
   const [playlistName, setPlaylistName] = useState("");
@@ -53,12 +54,8 @@ export default function Playlists({ data }) {
   };
 
   return (
-    <div className={styles["App"]}>
-      <Sidebar pageWrapId={"page-wrap"} outerContainerId={"outer-container"} />
-      <SearchButton />
-      <header className={styles["App-header"]}>
-        <h1>Playlists</h1>
-        <button
+    <Layout title="Playlists" useHeaderStyling>
+      <button
           className={playlistCSS["create-button"]}
           onClick = {handleCreatePlaylist}
         >
@@ -74,8 +71,8 @@ export default function Playlists({ data }) {
             />
           ))}
         </div>
-      </header>
-    </div>
+    </Layout>
+
   );
 }
 
