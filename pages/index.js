@@ -24,13 +24,10 @@ function Home({ user }) {
 
 // get data from database
 export const getServerSideProps = withSession(async function ({ req }) {
-  // await connectToDatabase();
+  await connectToDatabase();
 
   const user = req.session.get("user") || null;
 
-  // const user = {
-  //   name: "tony"
-  // };
   return {
     props: {
       user,
