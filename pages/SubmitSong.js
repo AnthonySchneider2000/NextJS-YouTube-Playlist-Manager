@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "@styles/App.module.css";
+import styles from "@/styles/App.module.css";
 import Layout from "@/components/Layout";
 
 export default function SubmitSong() {

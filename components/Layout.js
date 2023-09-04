@@ -1,6 +1,6 @@
 import React from "react";
 import Sidebar from "./Sidebar";
-import styles from "@styles/App.module.css";
+import styles from "@/styles/App.module.css";
 import SearchButton from "./SearchButton";
 
 const Layout = ({

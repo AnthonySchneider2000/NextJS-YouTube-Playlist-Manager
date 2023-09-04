@@ -6,7 +6,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import Link from "next/link";
 import React from "react";
-import playlistCSS from "@styles/Playlist.module.css";
+import playlistCSS from "@/styles/Playlist.module.css";
 
 export default class Playlist extends React.Component {
   constructor(props) {

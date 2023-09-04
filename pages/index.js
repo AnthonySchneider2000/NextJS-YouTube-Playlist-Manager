@@ -1,7 +1,7 @@
 import React from "react";
 import connectToDatabase from '@/utils/db';
 import Layout from "@/components/Layout";
-import styles from "@styles/App.module.css";
+import styles from "@/styles/App.module.css";
 import { withSession } from "@/utils/session"
 
 function Home({ user }) {
