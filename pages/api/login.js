@@ -10,6 +10,7 @@ const handler = withSession(async (req, res) => {
   const newUser = {
     username: "tony",
     password: "1234",
+    email: "t1@gmail.com",
   };
   
   if (!newUser) {
