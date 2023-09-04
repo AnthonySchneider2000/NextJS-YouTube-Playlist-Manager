@@ -1,9 +1,7 @@
 // [SongID].js
-import Sidebar from "@/components/Sidebar";
 import React from "react";
 import styles from "../../../styles/App.module.css";
 import playlistCSS from "../../../styles/Playlists.module.css";
-import SearchButton from "@/components/SearchButton";
 import connectToDatabase from '@/utils/db';
 import mongoose from "mongoose";
 import Layout from "@/components/Layout";

@@ -1,6 +1,4 @@
 import React from "react";
-import Sidebar from "@/components/Sidebar";
-import SearchButton from "@/components/SearchButton";
 import styles from "../styles/App.module.css";
 import Layout from "@/components/Layout";
 //TODO: BCRYPT
