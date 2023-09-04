@@ -3,17 +3,20 @@ import Sidebar from "./Sidebar";
 import styles from "../styles/App.module.css";
 import SearchButton from "./SearchButton";
 
-const Layout = ({ children, headerText }) => {
+const Layout = ({ useHeaderStyling = false, children, title }) => {
   return (
     <div className={styles["App"]}>
-        <Sidebar pageWrapId={"page-wrap"} outerContainerId={"outer-container"} />
-        <SearchButton />
-        <header className={styles["App-header"]}>
-            <h1>{headerText}</h1>
-        </header>
-        <main id="page-wrap">{children}</main>
+      <Sidebar pageWrapId={"page-wrap"} outerContainerId={"outer-container"} />
+      <SearchButton />
+      <header className={styles["App-header"]}>
+        <h1>{title}</h1>
+      </header>
+        {useHeaderStyling ? (
+            <main className={styles["App-header"]}>{children}</main>
+        ) : (
+            <main className={styles["App-main"]}>{children}</main> //App-main is currently not implemented
+        )}
     </div>
-    
   );
 };
 
