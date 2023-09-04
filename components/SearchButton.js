@@ -1,8 +1,10 @@
 import React from "react";
-import styles from "../styles/SearchButton.module.css";
+import styles from "@/styles/SearchButton.module.css";
+import { useRouter } from "next/router";
 
-export default class SearchButton extends React.Component {
-  searchHandler = async () => {
+export default function SearchButton() {
+  const router = useRouter();
+  const searchHandler = async () => {
     // Prompt user for search term
     let searchTerm = prompt("Enter search term:");
 
@@ -20,7 +22,10 @@ export default class SearchButton extends React.Component {
 
         if (success) {
           // Log the search results to the console
-          console.log(songs);
+          router.push({
+            pathname: "/SearchPage",
+            query: { songs: JSON.stringify(songs) },
+          });
         } else {
           console.log("Search failed.");
         }
@@ -30,11 +35,9 @@ export default class SearchButton extends React.Component {
     }
   };
 
-  render() {
-    return (
-      <button className={styles["search-symbol"]} onClick={this.searchHandler}>
-        🔎︎
-      </button>
-    );
-  }
+  return (
+    <button className={styles["search-symbol"]} onClick={searchHandler}>
+      🔎︎
+    </button>
+  );
 }

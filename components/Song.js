@@ -1,6 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React from "react";
-import styles from "../styles/Playlist.module.css";
+import styles from "@/styles/Playlist.module.css";
 
 export default class Song extends React.Component {
   constructor(props) {
@@ -21,7 +21,13 @@ export default class Song extends React.Component {
 
   openSong = () => {
     //add song id to the end of the url
-    window.location.href += "/" + this.state.id;
+    let url = window.location.href;
+    if(url.includes("/Playlists/")){
+      window.location.href += "/" + this.state.id;
+    }
+    else{
+      window.location.href = "/Songs/" + this.state.id;
+    }
   };
 
 
