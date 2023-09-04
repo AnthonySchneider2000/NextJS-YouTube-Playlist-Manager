@@ -1,6 +1,6 @@
 // [PlaylistID].js
 import React from "react";
-import playlistCSS from "../../styles/Playlists.module.css";
+import playlistCSS from "@styles/Playlists.module.css";
 import Song from "@/components/Song";
 import { useRouter } from "next/router";
 import connectToDatabase from "@/utils/db";
