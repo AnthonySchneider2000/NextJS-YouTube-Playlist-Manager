@@ -2,7 +2,7 @@
 import React from "react";
 import styles from "@/styles/App.module.css";
 import playlistCSS from "@/styles/Playlists.module.css";
-import connectToDatabase from '@/utils/db';
+import connectToDatabase from "@/utils/db";
 import mongoose from "mongoose";
 import Layout from "@/components/Layout";
 
@@ -39,7 +39,7 @@ export default function SongPage({ song }) {
       console.error("Failed to add YouTube Link:", response.status);
     }
   };
-  
+
   function handleAddYoutubeLink() {
     let link = prompt("Enter youtube link:");
     //sanitize the link
@@ -78,6 +78,7 @@ export default function SongPage({ song }) {
           No video available for this song.
         </p>
       )}
+      <div>ID: {song.id}</div>
     </Layout>
   );
 }
@@ -86,7 +87,6 @@ export async function getServerSideProps(context) {
   await connectToDatabase();
 
   const { PlaylistID, SongID } = context.params; // get the playlist id and song id from the url
-
 
   //search the songs collection for the song with the id SongID
   const song = await mongoose.connection.db
