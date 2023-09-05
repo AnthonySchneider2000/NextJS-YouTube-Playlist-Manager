@@ -87,30 +87,12 @@ export async function getServerSideProps(context) {
 
   const { PlaylistID, SongID } = context.params; // get the playlist id and song id from the url
 
-  const playlist = await mongoose.connection.db
-    .collection("playlists")
-    .findOne({ _id: new mongoose.Types.ObjectId(PlaylistID) });
-  if (!playlist) {
-    // handle playlist not found error
-    return {
-      notFound: true,
-    };
-  }
-
-  // const song = playlist.songs.find(song => song._id.toString() === SongID); // find the song in the playlist
-  // if (!song) {
-  //   // handle song not found error
-  //   return {
-  //     notFound: true
-  //   }
-  // }
 
   //search the songs collection for the song with the id SongID
   const song = await mongoose.connection.db
     .collection("songs")
     .findOne({ _id: new mongoose.Types.ObjectId(SongID) });
-  // console.log("song: ");
-  // console.log(song);
+
   return {
     props: {
       // make the song serializable
@@ -120,7 +102,6 @@ export async function getServerSideProps(context) {
         id: song._id.toString(),
         youtubeLink: song.youtubeLink ?? "", //if youtube link is undefined, set it to an empty string
       },
-      playlistName: playlist.name,
     },
   };
 }
