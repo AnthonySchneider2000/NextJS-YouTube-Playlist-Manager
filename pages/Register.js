@@ -5,6 +5,7 @@ import Layout from "@/components/Layout";
 export default function Register() {
   return (
     <Layout title="Register">
+      <div className={styles["spacer"]}></div>
       <form
         className={styles["registration-form"]}
         action="/api/register"

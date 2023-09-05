@@ -31,44 +31,40 @@ export default function SubmitSong() {
   };
   return (
     <Layout title="Submit Song">
-      <div className={styles["formContainer"]}>
-      <form
-        className={styles["registration-form"]}
-        action="/api/song"
-        method="post"
-      >
-        <label htmlFor="songName">Song Name:</label>
-        <input type="text" id="songName" name="songName" required />
-        <label htmlFor="artistName">Artist Name:</label>
-        <input type="text" id="artistName" name="artistName" required />
+      <div className={styles["pageContainer"]}>
+        <div className={styles["formContainer"]}>
+          <form
+            className={styles["registration-form"]}
+            action="/api/song"
+            method="post"
+          >
+            <label htmlFor="songName">Song Name:</label>
+            <input type="text" id="songName" name="songName" required />
+            <label htmlFor="artistName">Artist Name:</label>
+            <input type="text" id="artistName" name="artistName" required />
 
-        <button type="submit">Submit</button>
-      </form>
-      <form className={styles["registration-form"]} onSubmit={handleSearch}>
-        <label htmlFor="searchTerm">Search for a song:</label>
-        <input
-          type="text"
-          id="searchTerm"
-          name="searchTerm"
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          required
-        />
-        <button type="submit">Search</button>
-      </form>
+            <button type="submit">Submit</button>
+          </form>
+          <form className={styles["registration-form"]} onSubmit={handleSearch}>
+            <label htmlFor="searchTerm">Search for a song:</label>
+            <input
+              type="text"
+              id="searchTerm"
+              name="searchTerm"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              required
+            />
+            <button type="submit">Search</button>
+          </form>
+        </div>
+        <div className={styles["searchTitle"]}>Search Results</div>
+        {searchResults.map((result) => (
+          <div className={playlistCSS["playlistListFlex"]}>
+            <div>{result.snippet.title}</div>
+          </div>
+        ))}
       </div>
-      <div>
-        <h1>Search Results</h1>
-        <ul>
-          {searchResults.map((result) => (
-            <li key={result.id.videoId} className={playlistCSS["playlistListFlex"]}>
-              <div>{result.snippet.title}</div>
-            </li>
-          ))}
-        </ul>
-
-      </div>
-
     </Layout>
   );
 }
