@@ -12,6 +12,19 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.App-main {
+  padding-top: 20px;
+  position:absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+  height: 90vh;
+}
 
 .App-link {
   color: #61dafb;
@@ -83,16 +96,19 @@
   /* background-color: #58628a; */
   color: #c7d3ff;
 }
+
 .registration-form {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  padding: 10px;
   /* Add other styles as needed */
 }
 
 .registration-form label {
-  font-size: 1.2em;
+  font-size: 2em;
   margin-bottom: 0.5em;
   display: block;
 }
@@ -100,9 +116,9 @@
 .registration-form input {
   width: 100%;
   max-width: 20em;
-  margin-bottom: 1.5em;
+  margin-bottom: 1em;
   padding: 0.5em;
-  font-size: 1.2em;
+  font-size: 2em;
   border-radius: 5px;
   border: 1px solid #ccc;
   outline: none;
