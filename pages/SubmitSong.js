@@ -31,6 +31,7 @@ export default function SubmitSong() {
   };
   return (
     <Layout title="Submit Song">
+      <div className={styles["formContainer"]}>
       <form
         className={styles["registration-form"]}
         action="/api/song"
@@ -55,12 +56,13 @@ export default function SubmitSong() {
         />
         <button type="submit">Search</button>
       </form>
+      </div>
       <div>
         <h1>Search Results</h1>
         <ul>
           {searchResults.map((result) => (
             <li key={result.id.videoId} className={playlistCSS["playlistListFlex"]}>
-              <a href={`/song/${result.id.videoId}`}>{result.snippet.title}</a>
+              <div>{result.snippet.title}</div>
             </li>
           ))}
         </ul>
