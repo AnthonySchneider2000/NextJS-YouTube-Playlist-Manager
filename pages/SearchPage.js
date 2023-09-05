@@ -22,7 +22,7 @@ const SearchPage = () => {
     <Layout title="Search Results" useHeaderStyling>
       <div className={playlistCSS["playlistList"]}>
         {songs.map((song) => (
-          <Song name={song.title} id={song._id} key={song._id} />
+          <Song name={song.title} artist={song.artist} id={song._id} key={song._id} />
         ))}
       </div>
     </Layout>

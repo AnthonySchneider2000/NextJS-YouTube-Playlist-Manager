@@ -52,7 +52,7 @@ export default function PlaylistPage({ allSongs, songs, playlistName }) {
       </button>
       <div className={playlistCSS["playlistList"]}>
         {songs.map((song) => (
-          <Song name={song.name} id={song.id} key={song.id} />
+          <Song name={song.name} artist={song.artist} id={song.id} key={song.id} />
         ))}
       </div>
     </Layout>
@@ -94,11 +94,13 @@ export async function getServerSideProps(context) {
       allSongs: allSongs.map((song) => ({
         _id: song._id.toString(),
         name: song.title,
+        artist: song.artist,
         id: song._id.toString(),
       })), // this is the array of all songs, as objects with name and id
       songs: songsInPlaylist.map((song) => ({
         _id: song._id.toString(),
         name: song.title,
+        artist: song.artist,
         id: song._id.toString(),
       })), // this is the array of songs in the playlist, as objects with name and id
       playlistName: playlist.name,
